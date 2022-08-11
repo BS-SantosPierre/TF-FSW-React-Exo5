@@ -22,6 +22,7 @@ const todoItems = [
 
 const TodoApp = () => {
 	const [todos, setTodos] = useState(todoItems);
+	const [filter, setFilter] = useState('all');
 
 	const addTodo = (todo) => {
 		setTodos([
@@ -52,7 +53,39 @@ const TodoApp = () => {
 
 	return <div className="min-h-screen max-w-5xl mx-auto">
 		<TodoForm onAddTodo={addTodo}/>
-		<TodoList todos={todos} onDeleteTodo={deleteTodo} onDoneTodo={doneTodo}/>
+		<div className="my-5 flex justify-center">
+			<span className="relative z-0 inline-flex shadow-sm rounded-md">
+				<button
+					type="button"
+					className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+					onClick={() => setFilter('all')}
+				>
+					All
+				</button>
+				<button
+					type="button"
+					className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+					onClick={() => setFilter('low')}
+				>
+					Low
+				</button>
+				<button
+					type="button"
+					className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+					onClick={() => setFilter('normal')}
+				>
+					Normal
+				</button>
+				<button
+					type="button"
+					className="-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+					onClick={() => setFilter('high')}
+				>
+					High
+				</button>
+			</span>
+		</div>
+		<TodoList todos={todos} filter={filter} onDeleteTodo={deleteTodo} onDoneTodo={doneTodo}/>
 	</div>
 }
 

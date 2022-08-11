@@ -44,7 +44,6 @@ const TodoForm = ({ onAddTodo }) => {
 						name="description"
 						id="description"
 						className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-						defaultValue={''}
 						value={description}
           	onChange={({ target }) => setDescription(target.value)}
 					/>
@@ -67,7 +66,7 @@ const TodoForm = ({ onAddTodo }) => {
 				</select>
     	</div>
 			<button
-        type="button"
+        type="submit"
         className="inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         Add Todo
